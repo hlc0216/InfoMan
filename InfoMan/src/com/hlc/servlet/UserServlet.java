@@ -34,11 +34,11 @@ public class UserServlet extends HttpServlet {
 		else if ("out".equals(oper))
 			userOut(req, resp);// 调用退出登陆
 		else if ("pwd".equals(oper))
-			userChangePwd(req, resp);
+			userChangePwd(req, resp);//修改密码
 		else if ("show".equals(oper))
-			userShow(req, resp);
+			userShow(req, resp);//显示所有用户信息
 		else if ("reg".equals(oper))
-			userReg(req, resp);
+			userReg(req, resp);//用户注册
 		else
 			logger.debug("没有找到对应的操作符");
 
@@ -55,7 +55,7 @@ public class UserServlet extends HttpServlet {
 		String birth = req.getParameter("birth");
 		String[] bs = null;
 		if (birth != "") {
-			bs = birth.split("/");
+			bs = birth.split("-");
 			birth = bs[0] + "-" + bs[1] + "-" + bs[2];
 		}
 		logger.debug("要进行注册用户的数据" + uname + "/" + pwd + "/" + sex + "/" + age + "/" + birth);
@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
 		if (index > 0) {
 			// 获取sesssion
 			HttpSession hs = req.getSession();
-			hs.setAttribute("reg", "true");
+			hs.setAttribute("flag", 2);
 			// 重定向
 			resp.sendRedirect("/InfoMan/login.jsp");
 		}
@@ -102,7 +102,7 @@ public class UserServlet extends HttpServlet {
 		if (index > 0) {
 			// 获取session对象
 			HttpSession hs = req.getSession();
-			hs.setAttribute("pwd", true);
+			hs.setAttribute("flag", 1);
 			// 重定向到登陆页面
 			resp.sendRedirect("/InfoMan/login.jsp");
 
@@ -129,7 +129,6 @@ public class UserServlet extends HttpServlet {
 		if (u != null) {
 			// 获取session对象
 			HttpSession hs = req.getSession();
-			System.out.println(u.getUname() + "---------" + u.getPwd());
 			// 将用户数据存储到session中
 			hs.setAttribute("user", u);
 			// 重定向

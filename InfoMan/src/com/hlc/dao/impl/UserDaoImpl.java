@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
 			// 加载驱动
 			Class.forName("com.mysql.jdbc.Driver");
 			// 获取连接对象
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in", "root", "123456");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in?useUnicode=true&characterEncoding=utf-8", "root", "123456");
 			// 创建sql命令
 			String sql = "select * from t_user where uname=? and pwd=?";
 			// 创建sql命令对象
@@ -97,7 +97,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// 获取链接
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in", "root", "123456");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in?useUnicode=true&characterEncoding=utf-8", "root", "123456");
 			// 创建sql命令
 			String sql = "update t_user set pwd=? where uid=?";
 			// 创建sql命令对象
@@ -141,7 +141,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// 获取连接
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in", "root", "123456");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in?useUnicode=true&characterEncoding=utf-8", "root", "123456");
 			// 创建sql命令
 			String sql = "select * from t_user";
 			// 创建sql命令对象
@@ -193,7 +193,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			// 获取连接对象
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in", "root", "123456");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_in?useUnicode=true&characterEncoding=utf-8", "root", "123456");
 			// 创建sql命令
 			String sql = "insert into t_user value(default,?,?,?,?,?)";
 			//创建sql命令对象

@@ -1,8 +1,11 @@
 <%@ page language="java" import="java.util.*,projo.*"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,24 +17,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-  $(".click").click(function(){
-  $(".tip").fadeIn(200);
-  });
-  
-  $(".tiptop a").click(function(){
-  $(".tip").fadeOut(200);
-});
+	$(document).ready(function() {
+		$(".click").click(function() {
+			$(".tip").fadeIn(200);
+		});
 
-  $(".sure").click(function(){
-  $(".tip").fadeOut(100);
-});
+		$(".tiptop a").click(function() {
+			$(".tip").fadeOut(200);
+		});
 
-  $(".cancel").click(function(){
-  $(".tip").fadeOut(100);
-});
+		$(".sure").click(function() {
+			$(".tip").fadeOut(100);
+		});
 
-});
+		$(".cancel").click(function() {
+			$(".tip").fadeOut(100);
+		});
+
+	});
 </script>
 
 
@@ -64,25 +67,16 @@ $(document).ready(function(){
 				</tr>
 			</thead>
 			<tbody>
-				<%
-        	List<User> lu=(ArrayList<User>)request.getAttribute("lu");
-        	for(User u:lu){
-        %>
+				<c:forEach items="${lu }" var="u">
 				<tr>
-					<td><%=u.getUid() %></td>
-					<td><%=u.getUname() %></td>
-					<td><%=u.getPwd()%></td>
-					<%
-	        	if("1".equals(u.getSex())){
-	        %>
-					<td>男</td>
-					<%}else{ %>
-					<td>女</td>
-					<%} %>
-					<td><%=u.getAge() %></td>
-					<td><%=u.getBirth() %></td>
+					<td>${u.uid }</td>
+					<td>${u.uname }</td>
+					<td>${u.pwd }</td>
+					<td>${u.sex=="1"?'男':'女' }</td>
+					<td>${u.age }</td>
+					<td>${u.birth}</td>
 				</tr>
-				<%} %>
+				</c:forEach>
 			</tbody>
 		</table>
 
@@ -112,7 +106,7 @@ $(document).ready(function(){
 	</div>
 
 	<script type="text/javascript">
-	$('.tablelist tbody tr:odd').addClass('odd');
+		$('.tablelist tbody tr:odd').addClass('odd');
 	</script>
 
 </body>

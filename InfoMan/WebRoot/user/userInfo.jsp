@@ -52,7 +52,6 @@ $(document).ready(function(){
 
 	<div class="rightinfo">
 
-
 		<table class="tablelist">
 			<thead>
 				<tr>
@@ -87,7 +86,6 @@ $(document).ready(function(){
 			<div class="tiptop">
 				<span>提示信息</span><a></a>
 			</div>
-
 			<div class="tipinfo">
 				<span><img src="images/ticon.png" /></span>
 				<div class="tipright">
