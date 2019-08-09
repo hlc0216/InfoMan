@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*,projo.*"
 	pageEncoding="utf-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -64,6 +65,7 @@ $(document).ready(function(){
 				</tr>
 			</thead>
 			<tbody>
+			<%-- 
 				<tr>
 					<td><%=((User)session.getAttribute("user")).getUid() %></td>
 					<td><%=((User)session.getAttribute("user")).getUname() %></td>
@@ -79,6 +81,16 @@ $(document).ready(function(){
 					<td><%=((User)session.getAttribute("user")).getAge() %></td>
 					<td><%=((User)session.getAttribute("user")).getBirth() %></td>
 				</tr>
+			--%>
+				<tr>
+					<td>${user.uid }</td>
+					<td>${user.uname }</td>
+					<td>${user.pwd }</td>
+					<td>${user.sex=="1"?'男':'女' }</td>
+					<td>${user.age }</td>
+					<td>${user.birth}</td>
+				</tr>
+				
 			</tbody>
 		</table>
 

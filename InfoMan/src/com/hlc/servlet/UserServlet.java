@@ -41,7 +41,6 @@ public class UserServlet extends HttpServlet {
 			userReg(req, resp);//用户注册
 		else
 			logger.debug("没有找到对应的操作符");
-
 	}
 	// 注册用户信息
 
@@ -96,10 +95,11 @@ public class UserServlet extends HttpServlet {
 		// 从session中获取用户信息
 		User u = (User) req.getSession().getAttribute("user");
 		int uid = u.getUid();
+		
 		// 处理请求
 		// 调用service方法
 		int index = us.userChangePwdService(newPwd, uid);
-		if (index > 0) {
+		if (index!=-1) {
 			// 获取session对象
 			HttpSession hs = req.getSession();
 			hs.setAttribute("flag", 1);
@@ -115,7 +115,7 @@ public class UserServlet extends HttpServlet {
 		// 强制销毁session
 		hs.invalidate();
 		// 重定向到登陆页面
-		resp.sendRedirect("/InfoMan/login.js");
+		resp.sendRedirect("/InfoMan/login.jsp");
 	}
 
 	private void checkUserLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -125,7 +125,6 @@ public class UserServlet extends HttpServlet {
 		// 处理请求信息
 		// 校验
 		User u = us.checkUserLoginService(uname, pwd);
-		// System.out.println(u.getUname()+"---------"+u.getPwd());
 		if (u != null) {
 			// 获取session对象
 			HttpSession hs = req.getSession();

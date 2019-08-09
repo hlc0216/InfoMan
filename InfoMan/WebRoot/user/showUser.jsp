@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,projo.*"pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*,projo.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
 <%
@@ -96,12 +96,7 @@
 				<input name="" type="button" class="sure" value="确定" />&nbsp; <input
 					name="" type="button" class="cancel" value="取消" />
 			</div>
-
 		</div>
-
-
-
-
 	</div>
 
 	<script type="text/javascript">
