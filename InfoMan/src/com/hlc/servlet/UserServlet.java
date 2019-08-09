@@ -24,9 +24,6 @@ public class UserServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 设置编码格式
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
 		// 获取操作符
 		String oper = req.getParameter("oper");
 		if ("login".equals(oper))
@@ -64,7 +61,7 @@ public class UserServlet extends HttpServlet {
 		int index = us.userRegService(u);
 		// 响应处理结果
 		if (index > 0) {
-			// 获取sesssion
+			// 获取session
 			HttpSession hs = req.getSession();
 			hs.setAttribute("flag", 2);
 			// 重定向
